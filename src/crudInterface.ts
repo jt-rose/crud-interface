@@ -16,3 +16,12 @@ export interface CrudOperations<T extends RecordId> {
   find(id: number): T | Error;
   update(id: number, updatedRecord: RecordWithoutId<T>): T | Error;
 }
+
+// interface for CRUD operations mapped to a generated object
+// similar to the ActiveRecord pattern
+// find is omitted since these operations are connected to a single record
+export interface CrudModel<T extends RecordId> {
+  save(): T | Error;
+  remove(): true | Error;
+  update(updatedRecord: RecordWithoutId<T>): T | Error;
+}
